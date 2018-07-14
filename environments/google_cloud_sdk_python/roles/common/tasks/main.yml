@@ -1,0 +1,10 @@
+---
+- name: install required packages
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    install_recommends: yes
+  with_items:
+    - "curl"
+    - "software-properties-common"
+    

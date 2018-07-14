@@ -1,0 +1,10 @@
+---
+- name: download sdk.tar.gz
+  shell: curl -L {{ gcp_sdk_download_url }} -o {{ gcp_sdk_dir }}/google-cloud-sdk.tar.gz
+
+- name: extract sdk.tar.gz
+  shell: tar zxvf {{ gcp_sdk_dir }}/google-cloud-sdk.tar.gz -C {{ gcp_sdk_dir }}
+
+- lineinfile:
+    path: /etc/profile
+    line: 'export PATH={{ gcp_sdk_dir }}/google-cloud-sdk/bin/:$PATH'
